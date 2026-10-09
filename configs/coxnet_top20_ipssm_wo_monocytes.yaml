@@ -1,0 +1,40 @@
+experiment:
+  name: RSF, ipssm, cytov2
+  description: "Test resf
+  seed: 42
+  tags: [baseline, linear]
+
+
+data:
+  raw_dir: data/raw
+  drop_missing_target: true
+
+features:
+  groups:
+    clinical:
+      columns: [BM_BLAST, HB, PLT, WBC, ANC]
+      
+
+    cytogenetics:
+      version: v2
+
+    molecular:
+      version: v1
+      top_genes: /home/joh/Sync/pro/data-challenge_ens/qrt_leukemia/data/preprocessed/top_gene.json
+
+    ipssm:
+      keep_variables: false
+
+model:
+  name: rsf
+  params:
+    n_estimators: 500
+    min_samples_leaf: 15
+    min_samples_split: 10
+    max_features: sqrt
+    max_depth: null
+    impute: median
+    n_jobs: 6
+    random_state: 0
+
+  

@@ -1,0 +1,41 @@
+experiment:
+  name: XGBcox, 
+  description: "XGBcox, ipssm , monocytes removed"
+  seed: 42
+  tags: [baseline, linear]
+
+
+data:
+  raw_dir: data/raw
+  drop_missing_target: true
+
+features:
+  groups:
+    clinical:
+      columns: [BM_BLAST, HB, PLT, WBC, ANC]
+      
+
+    cytogenetics:
+      version: v1
+
+    molecular:
+      version: v1
+      top_genes: /home/joh/Sync/pro/data-challenge_ens/qrt_leukemia/data/preprocessed/top_gene.json
+
+    ipssm:
+      keep_variables: false
+
+model:
+  name: xgb_cox
+  params:
+    n_estimators: 500
+    learning_rate: 0.02
+    max_depth: 3
+    min_child_weight: 15
+    subsample: 0.8
+    colsample_bytree: 0.6
+    reg_lambda: 3.0
+    seeds: [0,1,2]
+  
+
+  

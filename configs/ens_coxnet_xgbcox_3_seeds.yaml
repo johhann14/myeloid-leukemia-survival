@@ -1,0 +1,19 @@
+experiment:
+  name: ens_coxnet_xgbcox
+  description: "Rank average Coxnet (ipssm, wo monocytes) + XGB-Cox"
+  seed: 42
+
+data:
+  raw_dir: data/raw
+
+features:
+  groups: {}            #
+
+model:
+  name: ensemble
+
+ensemble:
+  runs:
+    - 20260930-220125_coxnet_top20_ipssm_wo_monocytes
+    - 20261002-004219_xgb_cox_3_seeds
+  weights: [1, 1]

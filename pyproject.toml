@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qrt"
+version = "0.1.0"
+description = "ENS Data Challenge - QRT 2025: Overall Survival Prediction for patients diagnosed with Myeloid Leukemia"
+authors=[
+    {name= "Johann LY"}
+]
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+    "pandas>=2.2",
+    "scikit-learn>=1.5",
+    "scikit-survival>=0.23",
+    "pyyaml",
+    "pyarrow",
+    "loguru",
+    "omegaconf",
+    "fire",
+]
+readme = "README.md"
+
+[project.optional-dependencies]
+boosting = ["xgboost", "lightgbm", "catboost", "optuna"]
+analysis = ["matplotlib", "seaborn", "jupyter"]
+dev      = ["pytest"]
+
+[tool.setuptools.packages.find]
+testpaths=["tests"]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+
